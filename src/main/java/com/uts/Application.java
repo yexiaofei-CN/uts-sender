@@ -18,7 +18,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import java.net.InetSocketAddress;
-
+//javac -Djava.ext.dirs=D:\dev\IntelliJ IDEA_work\algorithm\lib\stdlib-package.jar;D:\dev\IntelliJ IDEA_work\algorithm\lib\algs4-package.jar BinarySearch.java
 @SpringBootApplication
 @Configuration        // xml配置類 这个类是xml配置类 让spring boot 项目启动时识别当前配置类
 @ComponentScan({"com.uts.*"})    // 扫描该包下 得注解 全局扫描  @RestController 等
@@ -53,6 +53,7 @@ public class Application {
     public InetSocketAddress tcphost() {
         return new InetSocketAddress(tcpHost,tcpPort);
     }
+
 
     public static void main(String[] args) throws InterruptedException {
         ConfigurableApplicationContext ctx = SpringApplication.run(Application.class, args);

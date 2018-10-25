@@ -9,11 +9,11 @@ import org.springframework.stereotype.Component;
 /**
  * Created by yxf on 2017/9/4.
  */
-@Component
+/*@Component
 public class test {
     private static Logger logger = LoggerFactory.getLogger(test.class);
     @Scheduled(initialDelay =1000, fixedDelay = 3000)
     public void test(){
        logger.info("schedulde test...");
     }
-}
+}*/
