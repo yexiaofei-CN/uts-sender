@@ -1,4 +1,5 @@
-package com.echoesnet.util.common
+package com.uts.util.commont
+
 
 /**
  * Created by LeoAshin on 2017/8/2.

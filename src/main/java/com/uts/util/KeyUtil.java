@@ -4,6 +4,7 @@ import com.fasterxml.uuid.EthernetAddress;
 import com.fasterxml.uuid.Generators;
 import com.fasterxml.uuid.impl.TimeBasedGenerator;
 
+
 /**
  * <B>系统名称：</B>通用平台<BR>
  * <B>模块名称：</B>通用平台-公共服务<BR>

@@ -4,13 +4,11 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.uts.dao.mysql.TradeDetailDao;
 import com.uts.entity.TradeDetail;
-import com.uts.netty.NettyClient;
 import com.uts.proptocal.Request;
 import com.uts.service.ITradeDetailService;
 import com.uts.util.commont.CommonConst;
 import io.netty.channel.ChannelFuture;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
