@@ -1,11 +1,13 @@
 package com.uts.netty;
 
 import io.netty.bootstrap.Bootstrap;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFuture;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import java.net.InetSocketAddress;
@@ -25,7 +27,7 @@ public class NettyClient {
     @Qualifier("hostPortSocketAddress")
     private InetSocketAddress tcpHostPort;
 
-    private ChannelFuture cf;
+    private  ChannelFuture cf;
 
     private static class SingletionHolder {
         private static NettyClient instance = new NettyClient();
@@ -38,22 +40,32 @@ public class NettyClient {
     private NettyClient() {
     }
 
-    public void connect() throws InterruptedException {
+    @Bean(name = "channelFuture")
+    public ChannelFuture connect() throws InterruptedException {
         try {
             logger.debug("===== inital nettyClient connetc...=====================");
             cf = bootstrap.connect(tcpHostPort).sync();
+         //   cf.channel().writeAndFlush(Unpooled.copiedBuffer("hello netty".getBytes()));
             logger.debug("===== inital nettyClient success...=====================");
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        return cf;
     }
 
-    public ChannelFuture getChannelFuture() {
-        if (this.cf == null) {
+    public void close(){
+        try {
+            cf.channel().closeFuture().sync();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ChannelFuture getChannelFuture(){
+        if(this.cf == null) {
             bootstrap.connect();
         }
-        if (!this.cf.channel().isActive()) {
+        if(!this.cf.channel().isActive()){
             bootstrap.connect();
         }
         return this.cf;
